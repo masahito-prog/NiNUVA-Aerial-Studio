@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern 2: Japanese Precision - Drone Aerial Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&family=Shippori+Mincho:wght@400;600;800&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --red: #C1272D;
+            --gold: #B8936F;
+            --charcoal: #333333;
+            --stone: #E5E5E5;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.8;
+        }
+
+        /* Subtle texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--stone);
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo-jp {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 800;
+            color: var(--red);
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            color: var(--ink);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--red);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover {
+            color: var(--red);
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--charcoal);
+            color: var(--charcoal);
+            padding: 0.5rem 1.2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        /* Hero Section */
+        .hero-jp {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 4rem 4rem;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1.2s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--red);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 1px;
+            background: var(--red);
+        }
+
+        .hero-title-jp {
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
+        }
+
+        .hero-title-en {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 300;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-jp {
+            padding: 1.2rem 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .btn-primary-jp {
+            background: var(--red);
+            color: var(--paper);
+        }
+
+        .btn-primary-jp::after {
+            content: '→';
+            margin-left: 0.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary-jp:hover::after {
+            transform: translateX(5px);
+        }
+
+        .btn-secondary-jp {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-secondary-jp:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1.2s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .visual-frame {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--stone) 0%, #d4d4d4 100%);
+            position: relative;
+            border: 1px solid var(--stone);
+        }
+
+        .visual-accent {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--red);
+            z-index: -1;
+        }
+
+        .visual-text {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            letter-spacing: 0.1em;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 10rem 4rem;
+            background: var(--ink);
+            color: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy::before {
+            content: '空';
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            font-family: 'Shippori Mincho', serif;
+            font-size: 40rem;
+            color: rgba(255, 255, 255, 0.02);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .philosophy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .philosophy-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .philosophy-subtitle {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            letter-spacing: 0.2em;
+        }
+
+        .philosophy-text {
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        /* Services Grid */
+        .services-jp {
+            padding: 10rem 4rem;
+            background: var(--paper);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--stone);
+            padding-bottom: 2rem;
+        }
+
+        .section-number {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            color: var(--stone);
+            line-height: 1;
+        }
+
+        .section-title-jp {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+        }
+
+        .services-grid-jp {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--stone);
+        }
+
+        .service-box {
+            background: var(--paper);
+            padding: 4rem 3rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--red);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .service-box:hover::before {
+            width: 5px;
+        }
+
+        .service-box:hover {
+            transform: translateX(10px);
+        }
+
+        .service-box-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-index {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2em;
+        }
+
+        .service-name-jp {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .service-name-en {
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+        }
+
+        /* Certification Banner */
+        .cert-banner {
+            padding: 8rem 4rem;
+            background: var(--stone);
+            text-align: center;
+        }
+
+        .cert-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cert-seal {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 3rem;
+            border: 3px solid var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--red);
+            position: relative;
+        }
+
+        .cert-seal::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 1px solid var(--red);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cert-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .cert-subtitle {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Contact Section */
+        .contact-jp {
+            padding: 10rem 4rem;
+            background: var(--paper);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--charcoal);
+            margin-bottom: 4rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-method {
+            padding: 2rem;
+            border: 1px solid var(--stone);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: var(--red);
+            transform: translateY(-5px);
+        }
+
+        .method-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--red);
+        }
+
+        .method-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .method-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 4rem;
+            text-align: center;
+            border-top: 1px solid var(--charcoal);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.2em;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .services-grid-jp {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-jp">
+            <div class="logo-symbol">空</div>
+            <div class="logo-text">SKY ARTISAN</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gear">Gear</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="lang-toggle">EN / 日本語</button>
+    </nav>
+
+    <section class="hero-jp">
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="hero-label">UAPL Certified Professional</div>
+                <h1 class="hero-title-jp">空からの<br>芸術</h1>
+                <p class="hero-title-en">Aerial Artistry from Singapore</p>
+                <p class="hero-description">
+                    日本人パイロットによる、精密で美しい空撮サービス。
+                    シンガポールを拠点に、合法的で安全な運用を保証します。
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#services" class="btn-jp btn-primary-jp">View Services</a>
+                    <a href="#contact" class="btn-jp btn-secondary-jp">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-frame"></div>
+                <div class="visual-accent"></div>
+                <div class="visual-text">Professional Drone Photography</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <h2 class="philosophy-title">和の精神</h2>
+            <p class="philosophy-subtitle">The Spirit of Wa</p>
+            <p class="philosophy-text">
+                私たちは、日本の職人精神と最新のドローン技術を融合させます。
+                細部へのこだわり、調和のとれた構図、そして完璧への追求。
+                それが私たちの空撮哲学です。
+            </p>
+        </div>
+    </section>
+
+    <section class="services-jp">
+        <div class="section-header">
+            <div class="section-number">01</div>
+            <h2 class="section-title-jp">サービス</h2>
+        </div>
+        <div class="services-grid-jp">
+            <div class="service-box reveal">
+                <div class="service-box-content">
+                    <div class="service-index">01</div>
+                    <h3 class="service-name-jp">商業映像制作</h3>
+                    <p class="service-name-en">Commercial Videography</p>
+                    <p class="service-description">
+                        企業プロモーション、CM、ブランディング映像のための高品質な空撮。
+                        4K/8K撮影、プロフェッショナルカラーグレーディング対応。
+                    </p>
+                </div>
+            </div>
+            <div class="service-box reveal">
+                <div class="service-box-content">
+                    <div class="service-index">02</div>
+                    <h3 class="service-name-jp">不動産空撮</h3>
+                    <p class="service-name-en">Real Estate Photography</p>
+                    <p class="service-description">
+                        物件の魅力を最大限に引き出す空撮。
+                        トワイライト撮影、360°パノラマ対応。
+                    </p>
+                </div>
+            </div>
+            <div class="service-box reveal">
+                <div class="service-box-content">
+                    <div class="service-index">03</div>
+                    <h3 class="service-name-jp">FPVダイナミック撮影</h3>
+                    <p class="service-name-en">FPV Dynamic Shots</p>
+                    <p class="service-description">
+                        没入感のある一人称視点の撮影。
+                        屋内飛行、近接撮影、アクション映像に最適。
+                    </p>
+                </div>
+            </div>
+            <div class="service-box reveal">
+                <div class="service-box-content">
+                    <div class="service-index">04</div>
+                    <h3 class="service-name-jp">イベント撮影</h3>
+                    <p class="service-name-en">Event Coverage</p>
+                    <p class="service-description">
+                        企業イベント、フェスティバル、スポーツイベントの空撮。
+                        ライブ配信、当日ハイライト納品対応。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cert-banner">
+        <div class="cert-content">
+            <div class="cert-seal">認</div>
+            <h2 class="cert-title">UAPL認定パイロット</h2>
+            <p class="cert-subtitle">Certified by Civil Aviation Authority of Singapore</p>
+        </div>
+    </section>
+
+    <section class="contact-jp">
+        <div class="contact-container">
+            <h2 class="contact-title">お問い合わせ</h2>
+            <p class="contact-text">
+                プロジェクトについてお気軽にご相談ください。<br>
+                英語・日本語でのコミュニケーションが可能です。
+            </p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">✉</div>
+                    <div class="method-label">Email</div>
+                    <div class="method-value">contact@example.com</div>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">📞</div>
+                    <div class="method-label">Phone</div>
+                    <div class="method-value">+65-XXXX-XXXX</div>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">📍</div>
+                    <div class="method-label">Location</div>
+                    <div class="method-value">Singapore</div>
+                </div>
+            </div>
+            <a href="#contact" class="btn-jp btn-primary-jp">Send Message</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SKY ARTISAN 空撮</div>
+            <p class="footer-text">© 2026 Sky Artisan • UAPL Certified • Singapore</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroVisual = document.querySelector('.hero-visual');
+            if (heroVisual && scrolled < window.innerHeight) {
+                heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
