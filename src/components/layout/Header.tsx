@@ -3,7 +3,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
     const { language, setLanguage } = useLanguage();
@@ -27,7 +27,7 @@ export default function Header() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-light">
             <div className="container-custom py-6 flex justify-between items-center">
                 {/* Logo */}
-                <a href="/" className="flex flex-col gap-1 group">
+                <Link href="/" className="flex flex-col gap-1 group">
                     <div className="flex items-center gap-2">
                         {/* NINUVA Logo Text with red accents */}
                         <div className="text-2xl font-medium tracking-tight text-ink">
@@ -37,34 +37,34 @@ export default function Header() {
                     <div className="text-[0.7rem] tracking-[0.2em] text-gray-medium uppercase">
                         Aerial Studio
                     </div>
-                </a>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <ul className="hidden md:flex gap-12 list-none">
                     <li>
-                        <a href="/" className={navLinkClass("/")}>
+                        <Link href="/" className={navLinkClass("/")}>
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/about" className={navLinkClass("/about")}>
+                        <Link href="/about" className={navLinkClass("/about")}>
                             About
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/services" className={navLinkClass("/services")}>
+                        <Link href="/services" className={navLinkClass("/services")}>
                             Services
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/gear" className={navLinkClass("/gear")}>
+                        <Link href="/gear" className={navLinkClass("/gear")}>
                             Gear
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/contact" className={navLinkClass("/contact")}>
+                        <Link href="/contact" className={navLinkClass("/contact")}>
                             Contact
-                        </a>
+                        </Link>
                     </li>
                 </ul>
 
@@ -115,54 +115,54 @@ export default function Header() {
                 <div className="md:hidden bg-paper border-t border-gray-light">
                     <ul className="flex flex-col gap-4 p-6">
                         <li>
-                            <a
+                            <Link
                                 href="/"
                                 className={`block text-sm tracking-wide transition-smooth ${isActive("/") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
+                            <Link
                                 href="/about"
                                 className={`block text-sm tracking-wide transition-smooth ${isActive("/about") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
+                            <Link
                                 href="/services"
                                 className={`block text-sm tracking-wide transition-smooth ${isActive("/services") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Services
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
+                            <Link
                                 href="/gear"
                                 className={`block text-sm tracking-wide transition-smooth ${isActive("/gear") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Gear
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
+                            <Link
                                 href="/contact"
                                 className={`block text-sm tracking-wide transition-smooth ${isActive("/contact") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
-                            </a>
+                            </Link>
                         </li>
                         <li className="pt-4 border-t border-gray-light">
                             <button
