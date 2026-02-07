@@ -79,14 +79,14 @@ export default function Header() {
                     {language === "ja" ? "EN" : "日本語"}
                 </button>
 
-                {/* Mobile Menu Button */}
+                {/* Mobile Menu Button - Increased size and touch target */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden text-ink"
+                    className="md:hidden text-ink p-2 -mr-2"
                     aria-label="Toggle menu"
                 >
                     <svg
-                        className="w-6 h-6"
+                        className="w-8 h-8"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -112,12 +112,12 @@ export default function Header() {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden bg-paper border-t border-gray-light">
-                    <ul className="flex flex-col gap-4 p-6">
+                <div className="md:hidden bg-paper border-t border-gray-light h-screen">
+                    <ul className="flex flex-col p-6 divide-y divide-gray-100">
                         <li>
                             <Link
                                 href="/"
-                                className={`block text-sm tracking-wide transition-smooth ${isActive("/") ? "text-accent" : "text-gray-medium hover:text-ink"
+                                className={`block py-4 text-lg font-medium tracking-wide transition-smooth ${isActive("/") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -127,7 +127,7 @@ export default function Header() {
                         <li>
                             <Link
                                 href="/about"
-                                className={`block text-sm tracking-wide transition-smooth ${isActive("/about") ? "text-accent" : "text-gray-medium hover:text-ink"
+                                className={`block py-4 text-lg font-medium tracking-wide transition-smooth ${isActive("/about") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -137,7 +137,7 @@ export default function Header() {
                         <li>
                             <Link
                                 href="/services"
-                                className={`block text-sm tracking-wide transition-smooth ${isActive("/services") ? "text-accent" : "text-gray-medium hover:text-ink"
+                                className={`block py-4 text-lg font-medium tracking-wide transition-smooth ${isActive("/services") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -147,7 +147,7 @@ export default function Header() {
                         <li>
                             <Link
                                 href="/gear"
-                                className={`block text-sm tracking-wide transition-smooth ${isActive("/gear") ? "text-accent" : "text-gray-medium hover:text-ink"
+                                className={`block py-4 text-lg font-medium tracking-wide transition-smooth ${isActive("/gear") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -157,25 +157,27 @@ export default function Header() {
                         <li>
                             <Link
                                 href="/contact"
-                                className={`block text-sm tracking-wide transition-smooth ${isActive("/contact") ? "text-accent" : "text-gray-medium hover:text-ink"
+                                className={`block py-4 text-lg font-medium tracking-wide transition-smooth ${isActive("/contact") ? "text-accent" : "text-gray-medium hover:text-ink"
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
                             </Link>
                         </li>
-                        <li className="pt-4 border-t border-gray-light">
+                        <li className="pt-4 mt-2">
                             <button
                                 onClick={() => {
                                     setLanguage(language === "ja" ? "en" : "ja");
                                     setIsMenuOpen(false);
                                 }}
-                                className="flex items-center gap-2 text-gray-medium text-sm tracking-wide hover:text-ink transition-smooth"
+                                className="flex items-center gap-3 text-gray-medium text-lg font-medium tracking-wide hover:text-ink transition-smooth w-full py-2"
                             >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                                </svg>
-                                {language === "ja" ? "EN" : "日本語"}
+                                <div className="p-2 rounded-full bg-gray-50 border border-gray-light">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                                    </svg>
+                                </div>
+                                {language === "ja" ? "Switch to English" : "日本語に切り替え"}
                             </button>
                         </li>
                     </ul>

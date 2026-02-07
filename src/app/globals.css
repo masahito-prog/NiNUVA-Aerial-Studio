@@ -11,6 +11,8 @@
     scroll-behavior: smooth;
     box-shadow: none !important;
     background: #fafafa !important;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   html::before,
@@ -27,6 +29,8 @@
     line-height: 1.6;
     box-shadow: none !important;
     backdrop-filter: none !important;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   #__next {
