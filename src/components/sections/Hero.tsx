@@ -11,9 +11,9 @@ export default function Hero() {
                 <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-32 items-center">
                     {/* Left: Content */}
                     <div className="animate-fade-in">
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] mb-8 text-ink">
-                            Professional<br />
-                            <span className="font-medium">Aerial Cinematography</span>
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] mb-8 text-ink break-words">
+                            Professional<br className="hidden sm:block" />
+                            <span className="font-medium block sm:inline">Aerial Cinematography</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-gray-medium mb-12 max-w-xl leading-relaxed">
