@@ -45,7 +45,7 @@ export default function GearPage() {
             description: language === "ja"
                 ? "シネマカメラ搭載FPVから、狭い屋内を安全に飛ぶマイクロドローンまで完備。"
                 : "From cinema camera-equipped FPV to micro drones that safely fly through tight indoor spaces.",
-            image: "/fpv-flight.png"
+            image: "/gear-cinelifter.png"
         }
     ];
 
@@ -55,21 +55,21 @@ export default function GearPage() {
             description: language === "ja"
                 ? "8K/ProRes RAW対応。地上でのハイエンド撮影からドローンへの搭載まで。"
                 : "8K/ProRes RAW compatible. From high-end ground shooting to drone mounting.",
-            image: "/8k-sample.png"
+            image: "/gear-nikon-zr.png"
         },
         {
             name: "Sony ZV-E10 II",
             description: language === "ja"
                 ? "高速AFと機動性を活かしたシネマティックな記録。"
                 : "Cinematic recording leveraging high-speed AF and mobility.",
-            image: "/wide-aerial-1.png"
+            image: "/gear-sony-zve10.png"
         },
         {
             name: "GoPro HERO 13 / Naked GoPro",
             description: language === "ja"
                 ? "FPVドローンに最適化された究極のアクションカム。衝撃的な視点を4K/5.3Kの高画質で。"
                 : "Ultimate action cam optimized for FPV drones. Stunning perspectives in 4K/5.3K high quality.",
-            image: "/fpv-sample.png"
+            image: "/gear-gopro-hero13.png"
         }
     ];
 
