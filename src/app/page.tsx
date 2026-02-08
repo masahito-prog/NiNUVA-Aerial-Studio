@@ -37,9 +37,10 @@ export default function Home() {
                 {/* The NiNUVA Edge */}
                 <section className="py-24">
                     <div className="container-custom">
-                        <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-16">
-                            The NiNUVA Edge
-                        </h2>
+                        <div className="mb-16">
+                            <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">The NiNUVA Edge</p>
+                            <h2 className="text-2xl font-light text-ink">私たちが選ばれる理由</h2>
+                        </div>
 
                         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
                             {/* 1. Safety & Compliance */}
@@ -48,10 +49,10 @@ export default function Home() {
                                 <h3 className="text-xl font-medium mb-4">
                                     {language === "ja" ? "Safety & Compliance" : "Safety & Compliance"}
                                 </h3>
-                                <p className="text-base font-medium mb-3">
+                                <p className="text-base font-semibold mb-3">
                                     {language === "ja" ? "UAPL & UAOP 完全取得。" : "Full UAPL & UAOP Certification."}
                                 </p>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "シンガポール航空局（CAAS）公認のパイロットライセンス(UAPL)および運用許可(UAOP)を保持。日・星の両拠点で、法的にクリアで安全なフライトを徹底します。"
                                         : "Holding pilot license (UAPL) and operational permit (UAOP) certified by Singapore Civil Aviation Authority (CAAS). Ensuring legally compliant and safe flights at both Japan and Singapore bases."}
@@ -69,7 +70,7 @@ export default function Home() {
                                         ? "映画・広告業界基準のクオリティ。"
                                         : "Film & advertising industry standard quality."}
                                 </p>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "8K RAW対応のフラッグシップ機「Inspire 3」を主力に、プロの制作現場が求める豊かな階調と高解像度を実現。ブランドの価値を最高純度の映像で記録します。"
                                         : 'Centered on the flagship "Inspire 3" with 8K RAW support, achieving rich gradation and high resolution demanded by professional production sites. Recording brand value in the highest purity imagery.'}
@@ -87,7 +88,7 @@ export default function Home() {
                                         ? "言語の壁を超えたスムーズな連携。"
                                         : "Smooth collaboration beyond language barriers."}
                                 </p>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "日本語・英語に完全対応。国内外の多国籍な制作チームとも、円滑なコミュニケーションとプロジェクト管理を約束します。"
                                         : "Fully supporting Japanese and English. Promising smooth communication and project management with multinational production teams both domestically and internationally."}
@@ -100,9 +101,10 @@ export default function Home() {
                 {/* Service Categories */}
                 <section className="py-24 bg-paper border-t border-gray-light">
                     <div className="container-custom">
-                        <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-16">
-                            Service Categories
-                        </h2>
+                        <div className="mb-16">
+                            <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">Service Categories</p>
+                            <h2 className="text-2xl font-light text-ink">提供サービス</h2>
+                        </div>
 
                         <div className="grid md:grid-cols-3 gap-8">
                             {/* IMMERSIVE */}
@@ -116,7 +118,7 @@ export default function Home() {
                                 <h3 className="text-2xl font-medium mb-4 group-hover:text-accent transition-smooth">
                                     FPV
                                 </h3>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "空間を駆け抜ける、かつてない没入体験。"
                                         : "An unprecedented immersive experience racing through space."}
@@ -134,7 +136,7 @@ export default function Home() {
                                 <h3 className="text-2xl font-medium mb-4 group-hover:text-accent transition-smooth">
                                     8K
                                 </h3>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "放送・CM基準の圧倒的映像クオリティ。"
                                         : "Overwhelming video quality meeting broadcast and commercial standards."}
@@ -152,7 +154,7 @@ export default function Home() {
                                 <h3 className="text-2xl font-medium mb-4 group-hover:text-accent transition-smooth">
                                     Real Estate
                                 </h3>
-                                <p className="text-sm text-gray-medium leading-relaxed">
+                                <p className="text-base text-gray-medium leading-relaxed">
                                     {language === "ja"
                                         ? "資産の価値を証明する、確かな視点。"
                                         : "A reliable perspective proving asset value."}
@@ -165,33 +167,31 @@ export default function Home() {
                 {/* Selected Works */}
                 <section className="py-24">
                     <div className="container-custom">
-                        <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-16">
-                            Selected Works
-                        </h2>
+                        <div className="mb-16">
+                            <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">Selected Works</p>
+                            <h2 className="text-2xl font-light text-ink">実績紹介</h2>
+                        </div>
 
                         {/* Video Grid */}
                         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                             {[
-                                { id: 1, category: "FPV", image: "/fpv-sample.png" },
-                                { id: 2, category: "8K", image: "/8k-sample.png" },
-                                { id: 3, category: "Real Estate", image: "/hero-aerial.png" },
-                                { id: 4, category: "FPV", image: "/fpv-sample.png" },
+                                { id: 1, videoId: "-Unv68VEJ8Y", category: "FPV" },
+                                { id: 2, videoId: "hpcWQPUKqjU", category: "FPV" },
+                                { id: 3, videoId: "HdERYvA2de0", category: "8K" },
+                                { id: 4, videoId: "-lyeKYkQg3w", category: "Real Estate" },
                             ].map((item) => (
                                 <div
                                     key={item.id}
-                                    className="group aspect-video bg-gradient-to-br from-gray-light to-gray-light/70 border border-gray-light relative overflow-hidden cursor-pointer transition-smooth hover:border-ink"
+                                    className="aspect-video border border-gray-light relative overflow-hidden transition-smooth hover:border-ink"
                                 >
-                                    <img
-                                        src={item.image}
-                                        alt={`${item.category} Sample`}
-                                        className="w-full h-full object-cover"
+                                    <iframe
+                                        src={`https://www.youtube.com/embed/${item.videoId}`}
+                                        title={`${item.category} Sample`}
+                                        className="w-full h-full"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
                                     />
-                                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-smooth flex items-center justify-center">
-                                        <div className="text-6xl text-paper/80 opacity-0 group-hover:opacity-100 transition-smooth">
-                                            ▶
-                                        </div>
-                                    </div>
-                                    <div className="absolute top-4 left-4 text-xs uppercase tracking-[0.2em] text-accent bg-paper px-3 py-1">
+                                    <div className="absolute top-4 left-4 text-xs uppercase tracking-[0.2em] text-accent bg-paper px-3 py-1 pointer-events-none">
                                         {item.category}
                                     </div>
                                 </div>
@@ -203,9 +203,10 @@ export default function Home() {
                 {/* Gear & Safety Status */}
                 <section className="py-24 bg-paper border-t border-gray-light">
                     <div className="container-custom">
-                        <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-16">
-                            Gear & Safety Status
-                        </h2>
+                        <div className="mb-16">
+                            <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">Gear & Safety Status</p>
+                            <h2 className="text-2xl font-light text-ink">機材と安全への取り組み</h2>
+                        </div>
 
                         <div className="grid md:grid-cols-3 gap-8 mb-12">
                             {[
@@ -227,7 +228,7 @@ export default function Home() {
                         </div>
 
                         <div className="text-center max-w-2xl mx-auto">
-                            <p className="text-lg font-medium text-ink">
+                            <p className="text-base font-medium text-ink">
                                 {language === "ja"
                                     ? "最高水準の対人・対物賠償責任保険に加入済み"
                                     : "Covered by highest-standard personal and property liability insurance"}

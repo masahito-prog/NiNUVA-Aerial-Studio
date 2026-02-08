@@ -151,8 +151,8 @@ export default function ServicesPage() {
                     <div className="container-custom">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-24">
-                                <p className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-2">Core Services</p>
-                                <h2 className="text-3xl md:text-4xl font-light text-ink">Our Expertise</h2>
+                                <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">Core Services</p>
+                                <h2 className="text-2xl font-light text-ink">私たちの専門性</h2>
                             </div>
 
                             <div className="space-y-32">
@@ -182,16 +182,16 @@ export default function ServicesPage() {
                                                 </h3>
                                             </div>
 
-                                            <p className="text-lg text-accent mb-6 font-medium">
+                                            <p className="text-base text-accent mb-6 font-semibold">
                                                 {service.subtitle}
                                             </p>
 
                                             <div className="mb-8">
                                                 <div className="border-l-2 border-ink pl-6 mb-6">
-                                                    <p className="text-sm font-bold text-ink uppercase tracking-wider mb-2">
+                                                    <p className="text-xs font-bold text-ink uppercase tracking-[0.2em] mb-2">
                                                         Target
                                                     </p>
-                                                    <p className="text-ink/70 text-sm">
+                                                    <p className="text-ink/70 text-base">
                                                         {service.target.replace('対象: ', '').replace('Target: ', '')}
                                                     </p>
                                                 </div>
@@ -202,10 +202,10 @@ export default function ServicesPage() {
 
                                             {/* Features - Minimalist List */}
                                             <div className="pt-6 border-t border-gray-light">
-                                                <p className="text-xs text-gray-medium uppercase tracking-widest mb-4 font-medium">Key Features</p>
+                                                <p className="text-xs text-gray-medium uppercase tracking-[0.2em] mb-4 font-medium">Key Features</p>
                                                 <ul className="grid grid-cols-1 gap-3">
                                                     {service.features.map((feature, idx) => (
-                                                        <li key={idx} className="flex items-center text-sm text-ink/70">
+                                                        <li key={idx} className="flex items-center text-base text-ink/70">
                                                             <span className="w-1.5 h-1.5 bg-accent rounded-full mr-3"></span>
                                                             {feature}
                                                         </li>
@@ -224,12 +224,12 @@ export default function ServicesPage() {
                 <section className="py-32 bg-ink text-paper">
                     <div className="container-custom">
                         <div className="max-w-4xl mx-auto text-center mb-16">
-                            <h2 className="text-sm uppercase tracking-[0.2em] text-paper/50 mb-4">
+                            <p className="text-xs uppercase tracking-[0.3em] text-paper/50 mb-3">
                                 {t.compliance.title}
-                            </h2>
-                            <h3 className="text-3xl md:text-5xl font-light leading-tight">
+                            </p>
+                            <h2 className="text-2xl md:text-3xl font-light leading-tight text-paper">
                                 {t.compliance.subtitle}
-                            </h3>
+                            </h2>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                                     <h4 className="text-xl font-medium mb-4 text-paper">
                                         {item.title}
                                     </h4>
-                                    <p className="text-paper/70 text-sm leading-relaxed">
+                                    <p className="text-paper/70 text-base leading-relaxed">
                                         {item.description}
                                     </p>
                                 </div>

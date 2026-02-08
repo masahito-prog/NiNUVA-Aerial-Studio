@@ -70,7 +70,7 @@ export default function AboutPage() {
                                         ? "進むべき道を、空から照らす。"
                                         : "Illuminating the path forward from the sky."}
                                 </h2>
-                                <p className="text-lg leading-relaxed text-paper/80 mb-6">
+                                <p className="text-base leading-relaxed text-paper/80 mb-6">
                                     {language === "ja" ? (
                                         <>
                                             「NiNUVA（ニヌファ）」の由来は、沖縄の古語で北斗七星を指す「ニーヌファブシ」。
@@ -101,15 +101,17 @@ export default function AboutPage() {
                 <section className="py-32 border-t border-gray-light">
                     <div className="container-custom">
                         <div className="max-w-5xl mx-auto">
-                            <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-8 text-center">
-                                {language === "ja" ? "安全と法規遵守" : "Safety & Compliance"}
-                            </h2>
-                            <h3 className="text-4xl md:text-5xl font-light mb-12 text-center leading-tight">
-                                {language === "ja"
-                                    ? "プロフェッショナルとしての責任"
-                                    : "Professional Responsibility"}
-                            </h3>
-                            <p className="text-lg md:text-xl leading-relaxed text-ink/70 mb-16 text-center max-w-4xl mx-auto">
+                            <div className="text-center mb-12">
+                                <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">
+                                    {language === "ja" ? "安全と法規遵守" : "Safety & Compliance"}
+                                </p>
+                                <h2 className="text-2xl md:text-3xl font-light mb-6 leading-tight">
+                                    {language === "ja"
+                                        ? "プロフェッショナルとしての責任"
+                                        : "Professional Responsibility"}
+                                </h2>
+                            </div>
+                            <p className="text-base leading-relaxed text-ink/70 mb-16 text-center max-w-4xl mx-auto">
                                 {language === "ja"
                                     ? "ドローン空撮において、美しさ以上に重要なのは「安全」であることです。NiNUVAは、シンガポールおよび日本において、厳格な法規制をクリアした運用を徹底しています。"
                                     : "In drone aerial photography, what is more important than beauty is 'safety'. NiNUVA thoroughly implements operations that comply with strict regulations in both Singapore and Japan."}
@@ -127,7 +129,7 @@ export default function AboutPage() {
                                     <h4 className="text-xl font-light mb-3">
                                         {language === "ja" ? "ライセンス" : "Licensing"}
                                     </h4>
-                                    <p className="text-sm text-ink/60 leading-relaxed">
+                                    <p className="text-base text-ink/60 leading-relaxed">
                                         {language === "ja"
                                             ? "シンガポール航空局（CAAS）発行のUAPL（無人航空機操縦ライセンス）保持。"
                                             : "Holds UAPL (Unmanned Aircraft Pilot License) issued by Singapore's Civil Aviation Authority (CAAS)."}
@@ -144,7 +146,7 @@ export default function AboutPage() {
                                     <h4 className="text-xl font-light mb-3">
                                         {language === "ja" ? "運用許可" : "Operation"}
                                     </h4>
-                                    <p className="text-sm text-ink/60 leading-relaxed">
+                                    <p className="text-base text-ink/60 leading-relaxed">
                                         {language === "ja"
                                             ? "組織としての運用許可UAOP（Unmanned Aircraft Operator Permit）に基づく正規の業務遂行。"
                                             : "Legitimate business operations based on UAOP (Unmanned Aircraft Operator Permit) as an organization."}
@@ -161,7 +163,7 @@ export default function AboutPage() {
                                     <h4 className="text-xl font-light mb-3">
                                         {language === "ja" ? "保険" : "Insurance"}
                                     </h4>
-                                    <p className="text-sm text-ink/60 leading-relaxed">
+                                    <p className="text-base text-ink/60 leading-relaxed">
                                         {language === "ja"
                                             ? "万が一の事態に備え、最高水準の対人・対物賠償責任保険に加入済み。"
                                             : "Covered by the highest standard of personal and property liability insurance for any unforeseen circumstances."}
@@ -178,7 +180,7 @@ export default function AboutPage() {
                                     <h4 className="text-xl font-light mb-3">
                                         {language === "ja" ? "国際基準" : "Global Standard"}
                                     </h4>
-                                    <p className="text-sm text-ink/60 leading-relaxed">
+                                    <p className="text-base text-ink/60 leading-relaxed">
                                         {language === "ja"
                                             ? "日本国内の国土交通省による包括申請・個別申請、およびシンガポールの各エリアでの飛行許可申請をすべて自社で完備。"
                                             : "Complete in-house capability for comprehensive and individual applications with Japan's MLIT, as well as flight permit applications for all areas in Singapore."}
@@ -193,9 +195,12 @@ export default function AboutPage() {
                 <section className="py-32 border-t border-gray-light bg-paper">
                     <div className="container-custom">
                         <div className="max-w-5xl mx-auto">
-                            <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-12 text-center">
-                                {language === "ja" ? "チーム" : "Team"}
-                            </h2>
+                            <div className="text-center mb-12">
+                                <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">
+                                    {language === "ja" ? "チーム" : "Team"}
+                                </p>
+                                <h2 className="text-2xl font-light text-ink">私たちについて</h2>
+                            </div>
 
                             <div className="grid md:grid-cols-2 gap-16 items-center">
                                 {/* Photo */}
@@ -232,9 +237,12 @@ export default function AboutPage() {
                 <section className="py-32 border-t border-gray-light">
                     <div className="container-custom">
                         <div className="max-w-4xl mx-auto">
-                            <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-12 text-center">
-                                {language === "ja" ? "会社概要" : "Company Overview"}
-                            </h2>
+                            <div className="text-center mb-12">
+                                <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">
+                                    {language === "ja" ? "会社概要" : "Company Overview"}
+                                </p>
+                                <h2 className="text-2xl font-light text-ink">基本情報</h2>
+                            </div>
 
                             <div className="space-y-6">
                                 <div className="flex border-b border-gray-light pb-4">
@@ -253,7 +261,7 @@ export default function AboutPage() {
                                     <dt className="w-1/3 text-sm uppercase tracking-wider text-gray-medium">
                                         {language === "ja" ? "事業内容" : "Services"}
                                     </dt>
-                                    <dd className="w-2/3 text-lg">
+                                    <dd className="w-2/3 text-base">
                                         {language === "ja"
                                             ? "ドローンによる動画撮影・静止画撮影、映像編集、航空法に基づく飛行申請代行、プロモーション支援"
                                             : "Drone video and still photography, video editing, flight permit application services, promotional support"}
@@ -268,15 +276,17 @@ export default function AboutPage() {
                 <section className="py-32 border-t border-gray-light bg-paper">
                     <div className="container-custom">
                         <div className="max-w-5xl mx-auto">
-                            <h2 className="text-sm uppercase tracking-[0.2em] text-gray-medium mb-8 text-center">
-                                {language === "ja" ? "対応エリア" : "Service Areas"}
-                            </h2>
-                            <h3 className="text-4xl md:text-5xl font-light mb-12 text-center leading-tight text-ink">
-                                {language === "ja"
-                                    ? "日本・シンガポールを中心に、グローバルな撮影に対応"
-                                    : "Global Coverage Centered on Japan and Singapore"}
-                            </h3>
-                            <p className="text-lg md:text-xl leading-relaxed text-ink/70 mb-16 text-center max-w-4xl mx-auto">
+                            <div className="text-center mb-12">
+                                <p className="text-xs uppercase tracking-[0.3em] text-gray-medium mb-3">
+                                    {language === "ja" ? "対応エリア" : "Service Areas"}
+                                </p>
+                                <h2 className="text-2xl md:text-3xl font-light mb-6 leading-tight text-ink">
+                                    {language === "ja"
+                                        ? "日本・シンガポールを中心に、グローバルな撮影に対応"
+                                        : "Global Coverage Centered on Japan and Singapore"}
+                                </h2>
+                            </div>
+                            <p className="text-base leading-relaxed text-ink/70 mb-16 text-center max-w-4xl mx-auto">
                                 {language === "ja"
                                     ? "私たちは日本とシンガポールの2拠点を中心に活動しています。それぞれの国の航空法（国土交通省 / CAAS）を熟知し、現地の言語や文化に合わせた柔軟な調整が可能です。"
                                     : "We operate primarily from two bases in Japan and Singapore. We are well-versed in the aviation laws of each country (MLIT / CAAS) and can flexibly adapt to local languages and cultures."}
@@ -290,7 +300,7 @@ export default function AboutPage() {
                                     <p className="text-sm text-gray-medium mb-4">
                                         {language === "ja" ? "シンガポール全域" : "All of Singapore"}
                                     </p>
-                                    <p className="text-sm leading-relaxed text-ink/70">
+                                    <p className="text-base leading-relaxed text-ink/70">
                                         {language === "ja"
                                             ? "マリーナ・エリアから各工業地帯まで。UAOPおよび各機関（CAAS, SPF, SLA等）への飛行申請代行を含めフルサポート。"
                                             : "From Marina area to industrial zones. Full support including flight permit applications to UAOP and various agencies (CAAS, SPF, SLA, etc.)."}
@@ -303,7 +313,7 @@ export default function AboutPage() {
                                     <p className="text-sm text-gray-medium mb-4">
                                         {language === "ja" ? "日本全国" : "All of Japan"}
                                     </p>
-                                    <p className="text-sm leading-relaxed text-ink/70">
+                                    <p className="text-base leading-relaxed text-ink/70">
                                         {language === "ja"
                                             ? "沖縄から北海道まで。国土交通省の包括申請済み。特定の重要施設やイベント等での個別申請にも対応。"
                                             : "From Okinawa to Hokkaido. Comprehensive permits from MLIT obtained. Also handles individual applications for specific important facilities and events."}
@@ -316,7 +326,7 @@ export default function AboutPage() {
                                     <p className="text-sm text-gray-medium mb-4">
                                         {language === "ja" ? "世界各地" : "Worldwide"}
                                     </p>
-                                    <p className="text-sm leading-relaxed text-ink/70">
+                                    <p className="text-base leading-relaxed text-ink/70">
                                         {language === "ja"
                                             ? "その他、東南アジア諸国など世界各地への出張撮影も承ります。"
                                             : "We also accept on-location filming assignments in Southeast Asian countries and other locations worldwide."}
