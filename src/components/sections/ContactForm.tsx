@@ -20,6 +20,8 @@ export default function ContactForm() {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [submitError, setSubmitError] = useState("");
 
     const content = {
         ja: {
@@ -47,7 +49,11 @@ export default function ContactForm() {
                 privacyPolicy: "プライバシーポリシー",
                 privacyAgreement: "に同意する",
                 submit: "送信する",
-                sending: "送信中..."
+                sending: "送信中...",
+                successTitle: "送信完了",
+                successMessage: "お問い合わせありがとうございます。内容を確認次第、担当者よりご連絡いたします。",
+                errorGeneric: "送信に失敗しました。時間をおいて再度お試しください。",
+                back: "戻る"
             },
             plans: [
                 { value: "fpv", label: "Cinematic FPV（没入型・疾走空撮）" },
@@ -89,7 +95,11 @@ export default function ContactForm() {
                 privacyPolicy: "Privacy Policy",
                 privacyAgreement: "I agree to the",
                 submit: "Submit",
-                sending: "Sending..."
+                sending: "Sending...",
+                successTitle: "Message Sent",
+                successMessage: "Thank you for your inquiry. We will get back to you shortly.",
+                errorGeneric: "Failed to send message. Please try again later.",
+                back: "Back"
             },
             plans: [
                 { value: "fpv", label: "Cinematic FPV (Immersive High-Speed Aerials)" },
@@ -161,14 +171,24 @@ export default function ContactForm() {
         }
 
         setIsSubmitting(true);
+        setSubmitError("");
 
-        // TODO: Implement form submission (Formspree/Resend)
-        console.log("Form data:", formData);
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-        // Simulate API call
-        setTimeout(() => {
-            alert("Form submitted successfully! (This is a demo)");
-            setIsSubmitting(false);
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Something went wrong');
+            }
+
+            setIsSuccess(true);
             setFormData({
                 company: "",
                 name: "",
@@ -180,8 +200,38 @@ export default function ContactForm() {
                 notes: "",
                 privacyAgreed: false,
             });
-        }, 1000);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        } catch (error) {
+            console.error('Submission error:', error);
+            setSubmitError(t.form.errorGeneric);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
+    if (isSuccess) {
+        return (
+            <section className="pt-32 pb-24 min-h-[60vh] flex items-center">
+                <div className="container-custom">
+                    <div className="max-w-2xl mx-auto text-center">
+                        <h2 className="text-3xl md:text-4xl font-light mb-6 text-ink">
+                            {t.form.successTitle}
+                        </h2>
+                        <p className="text-ink/60 leading-relaxed mb-10">
+                            {t.form.successMessage}
+                        </p>
+                        <button
+                            onClick={() => setIsSuccess(false)}
+                            className="bg-ink text-paper px-8 py-3 font-medium uppercase tracking-wider hover:bg-ink/90 transition-smooth border border-ink"
+                        >
+                            {t.form.back}
+                        </button>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <>
@@ -206,6 +256,11 @@ export default function ContactForm() {
                         onSubmit={handleSubmit}
                         className="max-w-3xl mx-auto"
                     >
+                        {submitError && (
+                            <div className="mb-8 p-4 bg-red-50 border border-red-200 text-red-600 text-center">
+                                {submitError}
+                            </div>
+                        )}
                         <div className="space-y-8">
                             {/* Company Name (Optional) */}
                             <div>

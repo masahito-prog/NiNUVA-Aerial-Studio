@@ -41,7 +41,7 @@ export default function ServicesPage() {
                     id: "industrial",
                     title: "Industrial & Real Estate",
                     subtitle: "産業・不動産空撮",
-                    image: "/wide-aerial-2.png",
+                    image: "/urban-real-estate.png",
                     target: "対象: 不動産オーナー、ゼネコン、点検業務、竣工記録。",
                     content: "正確なGPS制御と高画質静止画による、実務に即した空撮ソリューション。マンションの眺望撮影から建設現場の進捗管理、建物点検まで、安全かつ確実に「価値を可視化」します。",
                     features: ["RTKによる高精度測位", "高解像度パノラマ・静止画対応"]
