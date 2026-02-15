@@ -36,7 +36,7 @@ ${notes || 'None'}
         `;
 
         const data = await resend.emails.send({
-            from: 'NINUVA Contact <onboarding@resend.dev>', // Should be updated to a verified domain later
+            from: 'NINUVA Contact <contact@ninuva.com>',
             to: ['masahito@ninuva.com'],
             subject: subject,
             text: emailContent,
