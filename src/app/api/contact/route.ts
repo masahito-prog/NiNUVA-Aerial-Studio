@@ -37,7 +37,7 @@ ${notes || 'None'}
 
         const data = await resend.emails.send({
             from: 'NINUVA Contact <contact@ninuva.com>',
-            to: ['masahito@ninuva.com'],
+            to: ['info@ninuva.com'],
             subject: subject,
             text: emailContent,
             replyTo: email,
